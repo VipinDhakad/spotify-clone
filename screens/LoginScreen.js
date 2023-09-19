@@ -19,95 +19,8 @@ const discovery = {
 const LoginScreen = () => {
   const Navigation = useNavigation();
 
-//   useEffect(() => {
-//     const checkTokenValididy = async () => {
-//       const accessToken = await AsyncStorage.getItem("token");
-//       const expirationDate = await AsyncStorage.getItem("expirationDate");
-//       console.log("token", accessToken);
-//       console.log("expiry", expirationDate);
 
-//       if (accessToken && expirationDate) {
-//         const currentTime = Date.now();
-
-//         if (currentTime < parseInt(expirationDate)) {
-//           //valid token
-//           Navigation.navigate("Main");
-//         } else {
-//           await AsyncStorage.removeItem("token");
-//           await AsyncStorage.removeItem("expirationDate");
-//         }
-//       }
-//     };
-//     // checkTokenValididy();
-//     if (response?.type === 'success') {
-//         const { access_token } = response.params;
-//         console.log("token", access_token);
-//       }
-//   }, [response]);
   
-
-    // const config={
-    //     issuer:"https://accounts.spotify.com",
-    //     clientId:"179666d77c884af28885c5f681f66b3b",
-    //     scopes:[
-    //         "user-read-email",
-    //         "user-library-read",
-    //         "user-read-recently-played",
-    //         "user-top-read",
-    //         "playlist-read-private",
-    //         "playlist-read-collaborative",
-    //         "playlist-modify-public" // or "playlist-modify-private"
-
-    //     ],
-    //     redirectUrl:"exp://localhost:19002/--/spotify-auth-callback"
-    // }
-
-    // const result = await AppAuth.authAsync(config)
-
-    // const discovery = {
-    //     authorizationEndpoint: 'https://accounts.spotify.com/authorize',
-    //     tokenEndpoint: 'https://accounts.spotify.com/api/token',
-    //   };
-    //   console.log("1");
-
-    // const [request, response, promptAsync] = useAuthRequest(
-    //   {
-    //     responseType: ResponseType.Token,
-    //     clientId: "179666d77c884af28885c5f681f66b3b",
-    //     scopes: [
-    //       "user-read-email",
-    //       "user-library-read",
-    //       "user-read-recently-played",
-    //       "user-top-read",
-    //       "playlist-read-private",
-    //       "playlist-read-collaborative",
-    //       "playlist-modify-public", // or "playlist-modify-private"
-    //     ],
-    //     // In order to follow the "Authorization Code Flow" to fetch token after authorizationEndpoint
-    //     // this must be set to false
-    //     usePKCE: false,
-    //     // redirectUrl: "com.clonespotify:/oauthredirect",
-    //   },
-    //   discovery
-    // );
-    // console.log("2");
-
-
-
-    // if (response?.type === "success" && response.params["access_token"]) {
-    //   access_token = response.params["access_token"];
-    // }
-    // console.log("4");
-    // console.log("access token is ",access_token); // Now you can print the access_token here
-
-    // if (result.accessToken) {
-    // //   const expirationDate = new Date(
-    // //     result.accessTokenExpirationDate
-    // //   ).getTime();
-    //   await AsyncStorage.setItem("token", result.accessToken);
-    // //   await AsyncStorage.setItem("expirationDate", expirationDate.toString());
-    //   Navigation.navigate("Main");
-    // }
 
     
     const redirectUri = makeRedirectUri({});
@@ -115,7 +28,7 @@ const LoginScreen = () => {
       const [request, response, promptAsync] = useAuthRequest(
         {
           responseType: ResponseType.Token,
-          clientId: '179666d77c884af28885c5f681f66b3b',
+          clientId: 'place your clientID here',
           scopes: ['user-library-read', 
                 "user-read-email",
                 'user-library-modify',
@@ -124,9 +37,9 @@ const LoginScreen = () => {
                 "playlist-read-private",
                 "playlist-read-collaborative",
                 "playlist-modify-public" ],
-          // In order to follow the "Authorization Code Flow" to fetch token after authorizationEndpoint
-          // this must be set to false
+          
           usePKCE: false,
+            //add this url to spotify app setting in spotify developer website
           redirectUri:`${redirectUri}/--/spotify-auth-callback`
         
         },
