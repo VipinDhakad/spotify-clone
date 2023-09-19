@@ -10,7 +10,6 @@ const ProfileScreen = () => {
 
   const getProfile = async () => {
     const accessToken = await AsyncStorage.getItem("token");
-    // const accessToken = "BQCCCnInDaQg8BGzgBA1qq-RhV6pmbT2qQmDsWE1xFa8B16CjW8PMkjcypMn1VHmT-IkcwOv1opizxrlAPwTI8VcuHKG-zBnqtsn-cmpfS80sBOSSNpybJel7F4SIHn2DfCWEBKGtLL1r_F1iBZpQV_lMqU8I02tUlH1f3AFy5v6JXjo0N6F9g5hkPTQ_Rv-inPuB0MbcB0JbSuXdwWfDJLE2-j50UrZcCiKlZ0JVDb_cT-cxuJZSNJAMJ6IvbK34wPbi6KaMLHCKJkG"
     try {
       const response = await fetch("https://api.spotify.com/v1/me", {
         headers: {
